@@ -50,6 +50,8 @@ plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
 layout:
   /usr/share/tcltk:
     bind: $SNAP/usr/share/tcltk
+  /etc/fonts:
+    bind: $SNAP/etc/fonts
   
 apps:
   py-sol-fc:
