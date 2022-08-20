@@ -45,6 +45,10 @@ plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
     interface: content
     target: $SNAP/data-dir/sounds
     default-provider: gtk-common-themes:sounds-themes
+
+layout:
+  /usr/share/tcltk:
+    bind: $SNAP/usr/share/tcltk
   
 apps:
   py-sol-fc:
