@@ -131,4 +131,3 @@ parts:
       snapcraftctl build
       chmod +x launcher.sh
       mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/share/games/
-      cp .tms_config_master ${SNAPCRAFT_PART_INSTALL}/usr/share/games/
