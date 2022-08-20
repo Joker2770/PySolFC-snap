@@ -78,6 +78,7 @@ parts:
       - configobj
       - pycotap
       - attrs
+      - pysol_cards
     stage-packages:
       - libpulse0
       - libsdl2-2.0-0
