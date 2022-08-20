@@ -81,8 +81,8 @@ parts:
       - libsdl2-ttf-2.0-0
       - libxss1
       - libxxf86vm1
-      - tk8.5
-      - tcl8.5
+      - tk8.6
+      - tcl8.6
       - python3-tk
     build-packages:
       - libsdl2-dev
@@ -92,8 +92,8 @@ parts:
       - libfreetype6-dev
       - libportmidi-dev
       - libjpeg8-dev
-      - tk8.5-dev
-      - tcl8.5-dev
+      - tk8.6-dev
+      - tcl8.6-dev
       - python3-setuptools
 
   py-sol-fc:
