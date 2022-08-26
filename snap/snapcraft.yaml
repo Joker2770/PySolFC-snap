@@ -52,10 +52,17 @@ layout:
     bind: $SNAP/usr/share/tcltk
   /etc/fonts:
     bind: $SNAP/etc/fonts
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib:
+    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib
+  /usr/share/alsa:
+    bind: $SNAP/usr/share/alsa
   
 apps:
   py-sol-fc:
+    command-chain: ["snap/command-chain/alsa-launch"]
     command: usr/share/games/launcher.sh
+    environment:
+      LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
     extensions: [gnome-3-28]
     plugs:
       - home
@@ -67,12 +74,26 @@ apps:
       - x11
       - opengl
       - audio-playback
+      - pulseaudio
+      - alsa
       - removable-media
       - network
       - network-bind
 
 parts:
+  alsa-mixin:
+    plugin: dump
+    source: https://github.com/diddlesnaps/snapcraft-alsa.git
+    source-subdir: snapcraft-assets
+    build-packages:
+      - libasound2-dev
+    stage-packages:
+      - libasound2
+      - libasound2-plugins
+      - yad
+
   env:
+    after: [alsa-mixin]
     plugin: python
     python-version: python3
     python-packages:
