@@ -128,18 +128,25 @@ parts:
   py-sol-fc:
     after: [env]
     plugin: dump
-    source: "https://github.com/Joker2770/PySolFC-snap/raw/main/PySolFC-2.16.0.tar.xz"
-    source-type: tar
+    source: "https://github.com/shlomif/PySolFC.git"
+    source-type: git
+    source-depth: 1
+    source-branch: master
     organize:
       '*': usr/share/games/
     prime:
       - -Makefile
+      - -android
+      - -contrib
+      - -test
 
   cardsets:
     after: [py-sol-fc]
     plugin: dump
-    source: "https://github.com/Joker2770/PySolFC-snap/raw/main/PySolFC-Cardsets-2.1.tar.bz2"
-    source-type: tar
+    source: "https://github.com/shlomif/PySolFC-Cardsets.git"
+    source-depth: 1
+    source-branch: master
+    source-type: git
     organize:
       '*': usr/share/games/data/
 
@@ -153,7 +160,6 @@ parts:
     organize:
       launcher.sh: usr/share/games/
     prime:
-      - -PySolFC-*
       - -README*
       - -LICENSE
       - -snap
