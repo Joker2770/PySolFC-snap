@@ -128,15 +128,14 @@ parts:
   py-sol-fc:
     after: [env]
     plugin: dump
-    source: "https://github.com/shlomif/PySolFC/archive/refs/tags/pysolfc-2.18.0.tar.gz"
+    source: "https://udomain.dl.sourceforge.net/project/pysolfc/PySolFC/PySolFC-2.18.0/PySolFC-2.18.0.tar.xz"
     source-type: tar
     organize:
       '*': usr/share/games/
     prime:
       - -Makefile
       - -android
-      - -contrib
-      - -test
+      - -tests
 
   cardsets:
     after: [py-sol-fc]
