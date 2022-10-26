@@ -147,6 +147,16 @@ parts:
     organize:
       '*': usr/share/games/data/
 
+  music:
+    after: [cardsets]
+    plugin: dump
+    source: "https://github.com/shlomif/pysol-music.git"
+    source-depth: 1
+    source-branch: master
+    source-type: git
+    organize:
+      'data/music/*': usr/share/games/data/music/
+
   launcher:
     after: [cardsets]
     plugin: dump
