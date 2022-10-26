@@ -156,6 +156,11 @@ parts:
     source-type: git
     organize:
       'data/music/*': usr/share/games/data/music/
+      'COPYING': usr/share/games/data/music/
+    prime:
+      - -README*
+      - -Makefile
+      - -NEWS
 
   launcher:
     after: [cardsets]
