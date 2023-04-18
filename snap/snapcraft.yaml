@@ -128,7 +128,7 @@ parts:
   py-sol-fc:
     after: [env]
     plugin: dump
-    source: "https://udomain.dl.sourceforge.net/project/pysolfc/PySolFC/PySolFC-2.20.1.0/PySolFC-2.20.1.tar.xz"
+    source: "https://udomain.dl.sourceforge.net/project/pysolfc/PySolFC/PySolFC-2.20.1/PySolFC-2.20.1.tar.xz"
     source-type: tar
     organize:
       '*': usr/share/games/
