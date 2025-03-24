@@ -138,8 +138,6 @@ parts:
       - -bin/activate.csh
       - -bin/activate.fish
       - -bin/Activate.ps1
-      - -bin/python3
-      - -bin/python3.8
       - -bin/pip
       - -bin/pip3
       - -bin/pip3.8
