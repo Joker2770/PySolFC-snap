@@ -67,7 +67,7 @@ layout:
 apps:
   py-sol-fc:
     command-chain: ["snap/command-chain/alsa-launch"]
-    command: usr/share/games/launcher.sh
+    command: "python3 usr/share/games/pysol.py"
     environment:
       LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
       GTK_USE_PORTAL: '1'
