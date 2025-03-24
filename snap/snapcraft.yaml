@@ -132,6 +132,19 @@ parts:
       - tk8.6-dev
       - tcl8.6-dev
       - python3-setuptools
+    stage:
+      # WORKAROUND: Skip venv from python plugin
+      - -bin/activate
+      - -bin/activate.csh
+      - -bin/activate.fish
+      - -bin/Activate.ps1
+      - -bin/python
+      - -bin/python3
+      - -bin/python3.8
+      - -bin/pip
+      - -bin/pip3
+      - -bin/pip3.8
+      - -pyvenv.cfg
 
   py-sol-fc:
     after: [env]
