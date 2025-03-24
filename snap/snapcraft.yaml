@@ -67,12 +67,11 @@ layout:
 apps:
   py-sol-fc:
     command-chain: ["snap/command-chain/alsa-launch"]
-    command: "bin/python3 $SNAP/usr/share/games/pysol.py"
+    command: "bin/python $SNAP/usr/share/games/pysol.py"
     environment:
       LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
       GTK_USE_PORTAL: '1'
       SNAP_DESKTOP_RUNTIME: $SNAP/gnome-platform
-      PYTHONPATH: ${SNAP}/usr/lib/python3/dist-packages:$PYTHONPATH
     extensions: [gnome-3-38]
     plugs:
       - home
