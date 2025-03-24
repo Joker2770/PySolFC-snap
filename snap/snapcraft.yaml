@@ -26,28 +26,36 @@ description: |
 
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
-base: core18
+base: core20
 architectures:
   - build-on: amd64
   - build-on: i386
   - build-on: armhf
   - build-on: arm64
 
-plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
+plugs:
+  gnome-3-38-2004:
+    default-provider: gnome-3-38-2004
+    interface: content
+    target: $SNAP/gnome-platform
   gtk-3-themes:
+    default-provider: gtk-common-themes
     interface: content
     target: $SNAP/data-dir/themes
-    default-provider: gtk-common-themes:gtk-3-themes
   icon-themes:
+    default-provider: gtk-common-themes
     interface: content
     target: $SNAP/data-dir/icons
-    default-provider: gtk-common-themes:icon-themes
   sound-themes:
+    default-provider: gtk-common-themes
     interface: content
     target: $SNAP/data-dir/sounds
-    default-provider: gtk-common-themes:sounds-themes
 
 layout:
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0:
+    bind: $SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0
+  /usr/share/xml/iso-codes:
+    bind: $SNAP/gnome-platform/usr/share/xml/iso-codes
   /usr/share/tcltk:
     bind: $SNAP/usr/share/tcltk
   /etc/fonts:
@@ -63,7 +71,9 @@ apps:
     command: usr/share/games/launcher.sh
     environment:
       LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
-    extensions: [gnome-3-28]
+      GTK_USE_PORTAL: '1'
+      SNAP_DESKTOP_RUNTIME: $SNAP/gnome-platform
+    extensions: [gnome-3-38]
     plugs:
       - home
       - desktop
