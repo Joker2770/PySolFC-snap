@@ -29,7 +29,6 @@ confinement: strict # use 'strict' once you have the right plugs and slots
 base: core20
 architectures:
   - build-on: amd64
-  - build-on: i386
   - build-on: armhf
   - build-on: arm64
 
@@ -105,7 +104,6 @@ parts:
   env:
     after: [alsa-mixin]
     plugin: python
-    python-version: python3
     python-packages:
       - pygame
       - configobj
@@ -123,6 +121,7 @@ parts:
       - tk8.6
       - tcl8.6
       - python3-tk
+      - python3-venv
     build-packages:
       - libsdl2-dev
       - libsdl2-image-dev
@@ -130,7 +129,7 @@ parts:
       - libsdl2-ttf-dev
       - libfreetype6-dev
       - libportmidi-dev
-      - libjpeg8-dev
+      - libjpeg62-dev
       - tk8.6-dev
       - tcl8.6-dev
       - python3-setuptools
