@@ -50,6 +50,13 @@ apps:
       LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
       LC_ALL: C.UTF-8
       LANG: C.UTF-8
+      PYTHON_SITE_PACKAGES_PATH: $SNAP/lib/python3.8/site-packages
+      PYTHON_APT_PACKAGES_PATH: $SNAP/usr/lib/python3.8
+      PYTHON_LIB_DYNLOAD_PATH: $SNAP/usr/lib/python3.8/lib-dynload
+      TCL_LIBRARY: $SNAP/usr/share/tcltk/tcl8.6
+      TK_LIBRARY: $SNAP/usr/share/tcltk/tk8.6
+      PYTHONPATH: $PYTHON_SITE_PACKAGES_PATH:$PYTHON_APT_PACKAGES_PATH:$PYTHON_LIB_DYNLOAD_PATH:$TCL_LIBRARY:$TK_LIBRARY
+
     plugs:
       - home
       - desktop
