@@ -44,7 +44,7 @@ layout:
   
 apps:
   py-sol-fc:
-    command-chain: ["snap/command-chain/alsa-launch"]
+    command-chain: ["snap/command-chain/alsa-launch", "bin/desktop-launch"]
     command: "bin/python3 $SNAP/usr/share/games/pysol.py"
     environment:
       LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
@@ -77,10 +77,20 @@ parts:
       - libasound2-plugins
       - yad
 
+  desktop-glib-only:
+    after: [alsa-mixin]
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-subdir: glib-only
+    plugin: make
+    build-packages:
+      - libglib2.0-dev
+    stage-packages:
+      - libglib2.0-bin
+
   # Launcher for fixing the Glibc locales
   # https://forum.snapcraft.io/t/the-locales-launch-launcher-fix-glibc-locales-in-the-snap-runtime/10296
   locales-launch:
-    after: [alsa-mixin]
+    after: [desktop-glib-only]
     source: https://github.com/brlin-tw/locales-launch.git
     source-tag: v1.0.0
     plugin: dump
@@ -117,7 +127,6 @@ parts:
       - pycotap
       - attrs
       - pysol_cards
-      - tkinter
     stage-packages:
       - libpulse0
       - libsdl2-2.0-0
