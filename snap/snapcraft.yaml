@@ -117,6 +117,7 @@ parts:
       - pycotap
       - attrs
       - pysol_cards
+      - tkinter
     stage-packages:
       - libpulse0
       - libsdl2-2.0-0
