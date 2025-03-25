@@ -32,29 +32,7 @@ architectures:
   - build-on: armhf
   - build-on: arm64
 
-plugs:
-  gnome-3-38-2004:
-    default-provider: gnome-3-38-2004
-    interface: content
-    target: $SNAP/gnome-platform
-  gtk-3-themes:
-    default-provider: gtk-common-themes
-    interface: content
-    target: $SNAP/data-dir/themes
-  icon-themes:
-    default-provider: gtk-common-themes
-    interface: content
-    target: $SNAP/data-dir/icons
-  sound-themes:
-    default-provider: gtk-common-themes
-    interface: content
-    target: $SNAP/data-dir/sounds
-
 layout:
-  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0:
-    bind: $SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0
-  /usr/share/xml/iso-codes:
-    bind: $SNAP/gnome-platform/usr/share/xml/iso-codes
   /usr/share/tcltk:
     bind: $SNAP/usr/share/tcltk
   /etc/fonts:
@@ -67,17 +45,13 @@ layout:
 apps:
   py-sol-fc:
     command-chain: ["snap/command-chain/alsa-launch"]
-    command: "bin/python3.8 $SNAP/usr/share/games/pysol.py"
+    command: "bin/python3 $SNAP/usr/share/games/pysol.py"
     environment:
       LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
-      GTK_USE_PORTAL: '1'
-      SNAP_DESKTOP_RUNTIME: $SNAP/gnome-platform
-    extensions: [gnome-3-38]
     plugs:
       - home
       - desktop
       - desktop-legacy
-      - gsettings
       - wayland
       - unity7
       - x11
@@ -132,18 +106,6 @@ parts:
       - tk8.6-dev
       - tcl8.6-dev
       - python3-setuptools
-    stage:
-      # WORKAROUND: Skip venv from python plugin
-      - -bin/activate
-      - -bin/activate.csh
-      - -bin/activate.fish
-      - -bin/Activate.ps1
-      - -bin/python
-      - -bin/python3
-      - -bin/pip
-      - -bin/pip3
-      - -bin/pip3.8
-      - -pyvenv.cfg
 
   py-sol-fc:
     after: [env]
