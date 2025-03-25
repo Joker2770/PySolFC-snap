@@ -75,8 +75,39 @@ parts:
       - libasound2-plugins
       - yad
 
-  env:
+  # Launcher for fixing the Glibc locales
+  # https://forum.snapcraft.io/t/the-locales-launch-launcher-fix-glibc-locales-in-the-snap-runtime/10296
+  locales-launch:
     after: [alsa-mixin]
+    source: https://github.com/brlin-tw/locales-launch.git
+    source-tag: v1.0.0
+    plugin: dump
+    stage-packages:
+      # For localedef(1)
+      - libc-bin
+
+      # For locale data used by localedef(1)
+      - locales
+
+      # All pre-generated locale data
+      # DISABLED: Lots of duplicate data will be included in the snap when this is staged unless
+      # the target machine has no resource to generate them in runtime otherwise not use it
+      #
+      #   Lack of compiled locales breaks gettext based localization - snapcraft - snapcraft.io
+      #   https://forum.snapcraft.io/t/lack-of-compiled-locales-breaks-gettext-based-localisation/3758
+      #
+      #- locales-all
+
+    stage:
+      - bin/locales-launch
+      - etc/locale.alias
+      - usr/bin/localedef
+      - usr/share/doc/locales
+      - usr/share/i18n
+      - usr/share/locale
+
+  env:
+    after: [locales-launch]
     plugin: python
     python-packages:
       - pygame
