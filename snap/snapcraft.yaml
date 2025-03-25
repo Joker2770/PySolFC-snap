@@ -48,6 +48,8 @@ apps:
     command: "bin/python3 $SNAP/usr/share/games/pysol.py"
     environment:
       LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
     plugs:
       - home
       - desktop
