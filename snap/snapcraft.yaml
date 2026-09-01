@@ -128,6 +128,9 @@ parts:
   env:
     after: [locales-launch]
     plugin: python
+    # source is required by the python plugin on core22+ (Snapcraft 8/9).
+    # No setup.py/pyproject.toml here, so only python-packages are installed.
+    source: .
     python-packages:
       - pygame
       - configobj
