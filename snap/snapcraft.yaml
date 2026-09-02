@@ -163,8 +163,10 @@ parts:
   py-sol-fc:
     after: [env]
     plugin: dump
-    source: "https://cyfuture.dl.sourceforge.net/project/pysolfc/PySolFC/PySolFC-3.4.0/PySolFC-3.4.0.tar.xz?viasf=1"
-    source-type: tar
+    source: "https://github.com/shlomif/PySolFC.git"
+    source-type: git
+    source-depth: 1
+    source-tag: "pysolfc-3.4.0"
     organize:
       '*': usr/share/games/
     prime:
